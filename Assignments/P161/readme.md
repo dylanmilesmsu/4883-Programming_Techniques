@@ -7,7 +7,7 @@ Solution code to https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid
 
 |   #   | File            | Description                                        |
 | :---: | --------------- | -------------------------------------------------- |
-|   1   | [Main.cpp](./Main.cpp)         | Main driver of my project, contains all logic      |
+|   1   | [Main.java](./Main.java)         | Main driver of my project, contains all logic      |
 |   2   | [input](./input)         | the input file used from uDebug to test the program      |
 |   3   | [input2](./input2)         | another input file used from uDebug to test the program      |
 |   4   | [p161.pdf](./p161.pdf)         | the instructions file from onlinejudge      |
