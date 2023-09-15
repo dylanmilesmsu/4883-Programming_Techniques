@@ -15,7 +15,5 @@ Solution code to https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid
 
 ### Instructions
 
-Compiled with GCC
-
 - Example run command:
     - `./java -jar Main.jar < input`
