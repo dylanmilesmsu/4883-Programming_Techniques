@@ -10,7 +10,6 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
 		final Scanner scan = new Scanner(System.in);
 		final int numberOfRuns = scan.nextInt();
 		scan.useDelimiter("\n\n");
