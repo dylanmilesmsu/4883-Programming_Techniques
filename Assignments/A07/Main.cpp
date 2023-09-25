@@ -1,88 +1,56 @@
+//good version that actually work :D
+
 #include <iostream>
 #include <stack>
-#include <vector>
-#include <bits/stdc++.h>
 
 using namespace std;
 
 int main() {
-    stack<int> depot;
-    vector<int> enteringTrains;
     int trains;
-    cin >> trains;
-    bool fock = false;
-    for(int i = 0; i < trains; i++) {
-        int input;
-        cin >> input;
-        enteringTrains.push_back(input);
-    }
-    bool end = false;
-    while(!end) {
-        depot = {};
-        bool success = true;
-        int input2;
-        if(input2 == 0) {
-            end = true;
+    //used a vector before but this is faster?
+    int objective[1000]; //N ≤ 1000
+
+
+    while(true) {
+        cin >> trains;
+        if(trains == 0)
             break;
-        }
-        int index = 0;
-        for(int i = 0; i < trains; i++) {
-            cin >> input2;
-            if(input2 == enteringTrains[index]) {
-                cout << "cin " << input2 << endl;
-                index++;
-                continue;
-            } else {
-                cout << "pushing " << input2 << " to stack" << endl;
-                depot.push(input2);
-            }
-        }
-        
-        // cin >> input2;
-        // for(int x : enteringTrains) {
-        //     //this cant be enhanced loop
-        //     //we should do enterTrains[x]
-        //     cin >> input2;
-        //     if(input2 == x) {
-        //         cout << "cin " << input2 << endl;
-        //         continue;
-        //     } else {
-        //         cout << "pushing " << input2 << " to stack\n";
-        //         depot.push(input2);
 
-        //     }
-        // }
-        if(index == trains) {
-            cout << "yes" << endl;
-            continue;
-        } else {
-            for(int i = index; i < trains; i++) {
-                cout << depot.top() << " " << enteringTrains[i] << endl;
-                if(enteringTrains[i] == depot.top()) {
+        while(true) {
+            //load first one in manually to check for 0
+            cin >> objective[0];
+            if(objective[0] == 0) { //new scenario
+                cout << endl;
+                break;
+            }
+            //load the rest of the trains
+            //previously kept trying to solve this going int by int 
+            //but loading them all in at once seems to be the way to go
+            for(int i = 1; i < trains; i++) {
+                cin >> objective[i]; // populate all the trains
+            }
+
+            stack<int> depot;
+            int trainIn = 1;
+            int werg = 0;
+            while(trains >= trainIn) {
+                //kept trying to solve this only pushing when needed
+                //but yeah you just push all of them and insta pop if needed
+                depot.push(trainIn); 
+
+                while(!depot.empty() && objective[werg] == depot.top()) {
                     depot.pop();
-                    continue;
-                } else {
-                    cout << "no :(" << endl;
-                    return 0;
+                    werg++;
+                    if(werg >= trains)
+                        break;
                 }
+                trainIn++;
             }
-            cout << "yes" << endl;
+            if(depot.empty()) {
+                cout << "Yes" << endl;
+            } else {
+                cout << "No" << endl;
+            }
         }
-
-        // for(int x = 0; x < depot.size(); x++) {
-        //     if(depot.top() == input2) {
-        //         depot.pop();
-        //         cin >> input2;
-        //         cout << "cin " << input2 << endl;
-        //     } else {
-        //         cout << depot.top() + " was in stack, looking for " << input2 << endl;
-        //         success = false;
-        //     }
-        // }
-        // if(success) {
-        //     cout << "yes" << endl;
-        // } else {
-        //     cout << "no" << endl;
-        // }
     }
 }
