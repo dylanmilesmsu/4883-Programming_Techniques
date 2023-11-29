@@ -1,0 +1,2 @@
+g++ OptimizedMain.cpp -o Main
+./Main < biginput > bigoutput
